@@ -1,5 +1,3 @@
-package niotest;
-
 import java.net.InetSocketAddress;
 import java.net.SocketException;
 import java.nio.ByteBuffer;

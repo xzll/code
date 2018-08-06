@@ -1,4 +1,3 @@
-package niotest;
 import java.nio.channels.SelectionKey;
 
 import java.io.IOException;
