@@ -27,8 +27,10 @@ public class TimeClient {
             b.handler(new ChannelInitializer<SocketChannel>() {// (4)不使用childHandler 因为客户端SocketChannel没有父级
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new TimeClientHandler());
+//                    ch.pipeline().addLast(new TimeClientHandler());
+                    ch.pipeline().addLast(new TimeDecoder(),new TimeClientHandler());
                 }
+
             });
 
             // Start the client.

@@ -10,7 +10,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 public class TIMEServerHandler extends ChannelInboundHandlerAdapter {
     /**
      * 在建立连接时立即调用？
-     * @param ctx
+     * @param  ctx
      * @throws Exception
      */
     @Override
