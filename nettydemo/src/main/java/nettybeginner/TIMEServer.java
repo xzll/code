@@ -29,7 +29,10 @@ public class TIMEServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)配置channel
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new TIMEServerHandler());
+//                            ch.pipeline().addLast(new TIMEServerHandler());
+                            //添加编码器，服务器将UnixTime对象编码为ByteBuf，然后传给客户端
+                            //客户端收到这个ByteBuf后通过解码器将它解码为UnixTime对象，打印
+                            ch.pipeline().addLast(new TIMEServerHandler(),new TimeEncoder());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)设置父？channel参数
