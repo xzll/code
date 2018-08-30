@@ -12,15 +12,18 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 //        super.channelRead(ctx, msg);
-        ByteBuf m = (ByteBuf) msg; // (1)
-        try {
-            long currentTimeMills = (m.readUnsignedInt() - 2208988800L) * 1000L;//从服务端接收一个32位整数，将其翻译成可读的形式
-            System.out.println(new Date(currentTimeMills));
-            ctx.close();
-        } finally {
-            m.release();
-        }
+//        ByteBuf m = (ByteBuf) msg; // (1)
+//        try {
+//            long currentTimeMills = (m.readUnsignedInt() - 2208988800L) * 1000L;//从服务端接收一个32位整数，将其翻译成可读的形式
+//            System.out.println(new Date(currentTimeMills));
+//            ctx.close();
+//        } finally {
+//            m.release();
+//        }
 
+        UnixTime m = (UnixTime) msg;//接受UnixTime对象
+        System.out.println(m);
+        ctx.close();
     }
 
     @Override
