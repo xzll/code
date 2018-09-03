@@ -101,8 +101,8 @@ public class AVLTree<T extends Comparable<T>> {
      * @return
      */
     private AVLTreeNode<T> rlRotation(AVLTreeNode<T> k3) {
-        k3.right  = rrRotation(k3.right);
-        return llRotation(k3);
+        k3.right  = llRotation(k3.right);
+        return rrRotation(k3);
     }
 
     /**
@@ -257,7 +257,7 @@ public class AVLTree<T extends Comparable<T>> {
     private void inOrder(AVLTreeNode<T> tree){
         if(tree!=null) {
             inOrder(tree.left);
-            System.out.println(tree.key);
+            System.out.printf("%d ",tree.key);
             inOrder(tree.right);
         }
     }
@@ -269,7 +269,7 @@ public class AVLTree<T extends Comparable<T>> {
     }
 
     public static void main(String[] args) {
-        int arr[]= {3,2,1,4,5,6,7,16,15,14,13,12,11,10,8,9};
+        int arr[]= {3,2,1,4,19,6,7,16,15,14,13,12,11,10,8,9};
         int i;
         AVLTree<Integer> tree = new AVLTree<Integer>();
         System.out.printf("== 依次添加: ");
@@ -277,7 +277,7 @@ public class AVLTree<T extends Comparable<T>> {
               System.out.printf("%d ", arr[i]);
               tree.insert(arr[i]);
         }
-        System.out.println("== 中序输出");
+        System.out.println("== \n中序输出");
         tree.inOrder();
     }
 }
