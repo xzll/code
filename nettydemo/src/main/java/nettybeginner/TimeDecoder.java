@@ -13,6 +13,8 @@ public class TimeDecoder extends ByteToMessageDecoder { // (1)是ChannelInboundH
             return; // (3)接收到更多数据时，会再次调用decode
         }
 
-        out.add(in.readBytes(4)); // (4)将一个对象添加到out中，表示解码器成功解码了消息。丢弃缓冲区读取的部分
+//        out.add(in.readBytes(4)); // (4)将一个对象添加到out中，表示解码器成功解码了消息。丢弃缓冲区读取的部分
+        out.add(new UnixTime(in.readUnsignedInt()));//向out添加UnixTime对象
     }
+
 }
