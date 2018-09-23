@@ -47,10 +47,10 @@ public class IndexKMP {
      */
     public static int[] getNextVal(String str){
         int[] next = new int[str.length()];
-        int j = 1;
-        int k =0;
+        int j = 0;
+        int k = -1;
         next[0] = -1;
-        next[1] = 0;
+        
         while(j<=str.length()){
             if(k==-1 || str.charAt(j) == str.charAt(k)){
 //                next[j+1] = k+1;
