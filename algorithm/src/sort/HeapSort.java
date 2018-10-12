@@ -6,7 +6,9 @@ import java.util.Arrays;
  * 堆排序是一种选择排序，整体主要由构建初始堆+交换堆顶元素和末尾元素并重建堆两部分组成。
  * 其中构建初始堆经推导复杂度为O(n)，在交换并重建堆的过程中，需交换n-1次，
  * 而重建堆的过程中，根据完全二叉树的性质，[log2(n-1),log2(n-2)...1]逐步递减，近似为nlogn。
- * 所以堆排序时间复杂度一般认为就是O(nlogn)级。
+ * 所以堆排序时间复杂度一般认为就是O(nlogn);
+ * 最坏最好都是O(nlogn);
+ * 辅助空间O(1);
  */
 public class HeapSort {
 
@@ -32,9 +34,10 @@ public class HeapSort {
     /**
      * 调整最大堆
      * 堆大小小于等于3的可以当做是最大堆，所以构建最大堆时可以调用这个方法从下到上调整
-     * @param arr
-     * @param i
-     * @param length
+     * 循环子层直到子节点不大于父节点。
+     * @param arr 数组
+     * @param i 父节点
+     * @param length 要调整的数组长度，0~length-1
      */
     public static void adjustHeap(int[] arr,int i,int length){
         //如果子结点大于父结点的话，交换两者的位置，又因为交换之后又要判断下一层的父结点和子节点
